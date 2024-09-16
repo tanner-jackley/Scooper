@@ -1,2 +1,2 @@
 # Scooper
-Auto-clicker game using Python's Pygame
+An icecream auto-clicker game using Python's Pygame
