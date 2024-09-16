@@ -22,7 +22,7 @@ button = pygame.Rect(WIDTH // 2 - button_circle_radius, HEIGHT // 2 - button_cir
 button_color = BLACK
 
 upgrade_w, upgrade_h = 100, 50
-upgrade_button = pygame.Rect(WIDTH // 2 - (upgrade_w // 2), HEIGHT // 2 + 85, upgrade_w, upgrade_h)
+upgrade_button = pygame.Rect(WIDTH // 2 - (upgrade_w // 2), HEIGHT // 2 + 65, upgrade_w, upgrade_h)
 upgrade_button_color = BLUE
 
 clock = pygame.time.Clock()
@@ -93,11 +93,11 @@ while running:
     pygame.draw.rect(screen, upgrade_button_color, upgrade_button)
     drawText(screen, "Upgrade", WHITE, upgrade_button, font, True, None)
 
-    increment_text = font.render(f"x{score_increment}", True, BLACK)
-    screen.blit(increment_text, (WIDTH // 2 - increment_text.get_width() // 2, HEIGHT // 2 - button_circle_radius - 25))
     score_text = font.render(f"{total_button_score}", True, BLACK)
-    screen.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, HEIGHT // 2 + button_circle_radius + 10))
+    increment_text = font.render(f"x{score_increment}", True, BLACK)
     cost_text = font.render(f"Cost: {upgrade_cost}", True, BLACK)
+    screen.blit(score_text, (WIDTH // 2 - score_text.get_width() // 2, HEIGHT // 2 - button_circle_radius - increment_text.get_height() - 25))
+    screen.blit(increment_text, (WIDTH // 2 - increment_text.get_width() // 2, HEIGHT // 2 - button_circle_radius - 25))
     screen.blit(cost_text, (WIDTH // 2 - cost_text.get_width() // 2, HEIGHT // 2 + button_circle_radius + upgrade_h + 45))
 
     pygame.display.flip()
