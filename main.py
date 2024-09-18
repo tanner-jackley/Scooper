@@ -33,6 +33,7 @@ running = True
 scoop_count = 0
 scoop_multiplyer = 1
 current_upgrade_cost = 100
+current_autoscoop_cost = 100
 
 # https://www.pygame.org/wiki/TextWrap
 # draw some text into an area of a surface
@@ -100,9 +101,11 @@ while running:
     scoop_count_text = font.render(f"{scoop_count}", True, BLACK)
     scoop_multiplyer_text = font.render(f"x{scoop_multiplyer}", True, BLACK)
     upgrade_cost_text = font.render(f"Cost: {current_upgrade_cost}", True, BLACK)
-    screen.blit(scoop_count_text, (WIDTH // 2 - scoop_count_text.get_width() // 2, HEIGHT // 2 - scoop_radius - scoop_multiplyer_text.get_height() - 25))
-    screen.blit(scoop_multiplyer_text, (WIDTH // 2 - scoop_multiplyer_text.get_width() // 2, HEIGHT // 2 - scoop_radius - 25))
-    screen.blit(upgrade_cost_text, (WIDTH // 2 - upgrade_cost_text.get_width() // 2, HEIGHT // 2 + scoop_radius + button_h + 45))
+    autoscoop_cost_text = font.render(f"Cost: {current_autoscoop_cost}", True, BLACK)
+    screen.blit(scoop_count_text, (WIDTH // 2 - scoop_count_text.get_width() // 2, HEIGHT // 2 - scoop_radius - scoop_multiplyer_text.get_height() - 35))
+    screen.blit(scoop_multiplyer_text, (WIDTH // 2 - scoop_multiplyer_text.get_width() // 2, HEIGHT // 2 - scoop_radius - 30))
+    screen.blit(upgrade_cost_text, (WIDTH // 2 - (upgrade_cost_text.get_width() * 1.6), HEIGHT // 2 + scoop_radius + button_h + 35))
+    screen.blit(autoscoop_cost_text, (WIDTH // 2 + (autoscoop_cost_text.get_width() // 1.6), HEIGHT // 2 + scoop_radius + button_h + 35))
 
     pygame.display.flip()
 
