@@ -15,6 +15,7 @@ BLUE = (0, 0, 255)
 font = pygame.font.SysFont('freesansbold', 30)
 
 button_w, button_h = 100, 50
+button_color = BLUE
 
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Click the Circle")
@@ -23,8 +24,8 @@ scoop_radius = 50
 scoop = pygame.Rect(WIDTH // 2 - scoop_radius, HEIGHT // 2 - scoop_radius, scoop_radius * 2, scoop_radius * 2)
 scoop_color = BLACK
 
-upgrade_button = pygame.Rect(WIDTH // 2 - (button_w // 2), HEIGHT // 2 + 65, button_w, button_h)
-upgrade_button_color = BLUE
+upgrade_button = pygame.Rect(WIDTH // 2 - (button_w * 1.5), HEIGHT // 2 + 65, button_w, button_h)
+autoscoop_button = pygame.Rect(WIDTH // 2 + (button_w // 2), HEIGHT // 2 + 65, button_w, button_h)
 
 clock = pygame.time.Clock()
 running = True
@@ -91,15 +92,17 @@ while running:
     screen.fill(WHITE)
 
     pygame.draw.ellipse(screen, scoop_color, scoop)
-    pygame.draw.rect(screen, upgrade_button_color, upgrade_button)
+    pygame.draw.rect(screen, button_color, upgrade_button)
+    pygame.draw.rect(screen, button_color, autoscoop_button)
     drawText(screen, "Upgrade", WHITE, upgrade_button, font, True, None)
+    drawText(screen, "Auto", WHITE, autoscoop_button, font, True, None)
 
     scoop_count_text = font.render(f"{scoop_count}", True, BLACK)
     scoop_multiplyer_text = font.render(f"x{scoop_multiplyer}", True, BLACK)
     upgrade_cost_text = font.render(f"Cost: {current_upgrade_cost}", True, BLACK)
     screen.blit(scoop_count_text, (WIDTH // 2 - scoop_count_text.get_width() // 2, HEIGHT // 2 - scoop_radius - scoop_multiplyer_text.get_height() - 25))
     screen.blit(scoop_multiplyer_text, (WIDTH // 2 - scoop_multiplyer_text.get_width() // 2, HEIGHT // 2 - scoop_radius - 25))
-    screen.blit(upgrade_cost_text, (WIDTH // 2 - upgrade_cost_text.get_width() // 2, HEIGHT // 2 + scoop_radius + upgrade_button_h + 45))
+    screen.blit(upgrade_cost_text, (WIDTH // 2 - upgrade_cost_text.get_width() // 2, HEIGHT // 2 + scoop_radius + button_h + 45))
 
     pygame.display.flip()
 
