@@ -29,6 +29,7 @@ autoscoop_button = pygame.Rect(WIDTH // 2 + (button_w // 2), HEIGHT // 2 + 65, b
 
 clock = pygame.time.Clock()
 running = True
+prev_sec = int(time.time())
 
 scoop_count = 0
 scoop_multiplyer = 100
@@ -110,6 +111,12 @@ while running:
     screen.blit(scoop_multiplyer_text, (WIDTH // 2 - scoop_multiplyer_text.get_width() // 2, HEIGHT // 2 - scoop_radius - 30))
     screen.blit(upgrade_cost_text, (WIDTH // 2 - (upgrade_cost_text.get_width() * 1.6), HEIGHT // 2 + scoop_radius + button_h + 35))
     screen.blit(autoscoop_cost_text, (WIDTH // 2 + (autoscoop_cost_text.get_width() // 1.6), HEIGHT // 2 + scoop_radius + button_h + 35))
+
+    # auto-scoop
+    curr_sec = int(time.time())
+    if curr_sec - prev_sec == 1:
+            scoop_count += autoscoop
+    prev_sec = curr_sec
 
     pygame.display.flip()
 
