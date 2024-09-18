@@ -14,6 +14,8 @@ BLUE = (0, 0, 255)
 
 font = pygame.font.SysFont('freesansbold', 30)
 
+button_w, button_h = 100, 50
+
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Click the Circle")
 
@@ -21,8 +23,7 @@ scoop_radius = 50
 scoop = pygame.Rect(WIDTH // 2 - scoop_radius, HEIGHT // 2 - scoop_radius, scoop_radius * 2, scoop_radius * 2)
 scoop_color = BLACK
 
-upgrade_button_w, upgrade_button_h = 100, 50
-upgrade_button = pygame.Rect(WIDTH // 2 - (upgrade_button_w // 2), HEIGHT // 2 + 65, upgrade_button_w, upgrade_button_h)
+upgrade_button = pygame.Rect(WIDTH // 2 - (button_w // 2), HEIGHT // 2 + 65, button_w, button_h)
 upgrade_button_color = BLUE
 
 clock = pygame.time.Clock()
