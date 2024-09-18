@@ -84,12 +84,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.MOUSEBUTTONDOWN:
+            # if user clicks on scoop
             if scoop.collidepoint(event.pos):
                 scoop_count += scoop_multiplyer
+            # if user clicks on upgrade button
             elif upgrade_button.collidepoint(event.pos) and scoop_count >= current_upgrade_cost:
                 scoop_count -= current_upgrade_cost
                 scoop_multiplyer *= 2
                 current_upgrade_cost *= 5
+            # if user clicks on autoscoop button
             elif autoscoop_button.collidepoint(event.pos) and scoop_count >= current_autoscoop_cost:
                 scoop_count -= current_autoscoop_cost
                 autoscoop += 1
