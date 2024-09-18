@@ -31,8 +31,9 @@ clock = pygame.time.Clock()
 running = True
 
 scoop_count = 0
-scoop_multiplyer = 1
+scoop_multiplyer = 100
 current_upgrade_cost = 100
+autoscoop = 0
 current_autoscoop_cost = 100
 
 # https://www.pygame.org/wiki/TextWrap
@@ -84,11 +85,14 @@ while running:
         elif event.type == pygame.MOUSEBUTTONDOWN:
             if scoop.collidepoint(event.pos):
                 scoop_count += scoop_multiplyer
-
             elif upgrade_button.collidepoint(event.pos) and scoop_count >= current_upgrade_cost:
                 scoop_count -= current_upgrade_cost
                 scoop_multiplyer *= 2
                 current_upgrade_cost *= 5
+            elif autoscoop_button.collidepoint(event.pos) and scoop_count >= current_autoscoop_cost:
+                scoop_count -= current_autoscoop_cost
+                autoscoop += 1
+                current_autoscoop_cost *= 2
 
     screen.fill(WHITE)
 
