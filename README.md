@@ -10,3 +10,7 @@ Next to add:
  - view what upgrade you are at 
    > label for scoops per/click
    > label for autoscoops per/sec
+ - icecream scoops stack on each other
+ - stats
+ - shop?
+ - achievements?
